@@ -1,0 +1,31 @@
+# This references the default Python container from
+# the Docker Hub with the 3.7.2-alpine tag:
+# https://registry.hub.docker.com/_/python/
+# Read more about containers on our dev center
+# https://devcenter.wercker.com/overview-and-core-concepts/containers/
+box: python:3.7.2-alpine
+
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# https://devcenter.wercker.com/development/pipelines/
+build:
+  # The steps that will be executed on build
+  # Steps make up the actions in your pipeline
+  # Read more about steps on our dev center:
+  # https://devcenter.wercker.com/development/steps/
+  steps:
+    # A step that sets up the python virtual environment
+    - virtualenv
+        name: setup virtual environment
+        python_location: /usr/bin/python3.7
+    # Checking the python version
+    - script:
+        name: python information
+        code: |
+          echo "python version $(python --version) running"
+          echo "pip version $(pip --version) running"
+    # Install the required dependencies  
+    - script:
+       name: set up qa project
+       code: |
+         pip3 install -r requirements.txt
