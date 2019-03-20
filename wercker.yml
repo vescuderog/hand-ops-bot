@@ -15,9 +15,9 @@ build:
   # https://devcenter.wercker.com/development/steps/
   steps:
     # A step that sets up the python virtual environment
-    - virtualenv
+    - virtualenv:
         name: setup virtual environment
-        python_location: /usr/bin/python3.7
+        install_wheel: false # Enable wheel to speed up builds (experimental)
     # Checking the python version
     - script:
         name: python information
