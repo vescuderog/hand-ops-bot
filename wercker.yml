@@ -14,6 +14,10 @@ build:
   # Read more about steps on our dev center:
   # https://devcenter.wercker.com/development/steps/
   steps:
+    # Install virtualenv
+    - pip-install:
+        requirements_file: ""
+        packages_list: "virtualenv"
     # A step that sets up the python virtual environment
     - virtualenv:
         name: setup virtual environment
@@ -24,8 +28,6 @@ build:
         code: |
           echo "python version $(python --version) running"
           echo "pip version $(pip --version) running"
-    # Install the required dependencies  
-    - script:
-       name: set up qa project
-       code: |
-         pip3 install -r requirements.txt
+    # Install the required dependencies
+    - pip-install:
+        requirements_file: "requirements.txt"
