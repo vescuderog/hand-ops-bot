@@ -1,2 +1,2 @@
 # hand-ops-bot
-The DevOps user bot for Slack
+The DevOps bot user for Slack
