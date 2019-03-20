@@ -1,11 +1,7 @@
-import os
-from slackclient import SlackClient
+from app import create_app
+from config import get_env
 
-slack_token = os.environ["SLACK_API_TOKEN"]
-sc = SlackClient(slack_token)
+app = create_app(get_env('APP_ENV'))
 
-sc.api_call(
-  "chat.postMessage",
-  channel="varios",
-  text="Hello from Python! :tada:"
-)
+if __name__ == '__main__':
+    app.run()
