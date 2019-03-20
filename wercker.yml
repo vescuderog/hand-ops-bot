@@ -31,3 +31,19 @@ build:
     # Install the required dependencies
     - pip-install:
         requirements_file: "requirements.txt"
+deploy:
+  steps:
+    # Install the required dependencies
+    - script:
+       name: install dependencies
+       code: |
+         apk update \
+         && apk add --no-cache \
+         git \
+         openssh
+    # Deploy on heroku
+    - heroku-deploy:
+       key: $HEROKU_KEY
+       key-name: DEPLOY_KEY
+       user: $HEROKU_USER
+       app-name: hand-ops-bot
