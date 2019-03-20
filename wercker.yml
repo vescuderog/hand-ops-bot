@@ -28,9 +28,8 @@ build:
         code: |
           echo "python version $(python --version) running"
           echo "pip version $(pip --version) running"
-    # Install the required dependencies
+    # Install step
     - pip-install:
-        requirements_file: "requirements.txt"
 deploy:
   steps:
     # Install the required dependencies
