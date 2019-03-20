@@ -24,15 +24,6 @@ build:
 
 deploy:
   steps:
-    # Install the required dependencies
-    - script:
-       name: install dependencies
-       code: |
-         apk update \
-         && apk add --no-cache \
-         git \
-         openssh
-
     # Deploy on heroku
     - heroku-deploy:
        key: $HEROKU_KEY
