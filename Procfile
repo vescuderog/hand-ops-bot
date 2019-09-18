@@ -1,1 +1,1 @@
-web: gunicorn handops:handops
+web: gunicorn handops:bot
