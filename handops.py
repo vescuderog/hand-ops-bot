@@ -1,8 +1,8 @@
-from app import create_app
+from bot import create_bot
 from config import get_env
 
-app = create_app(get_env('APP_ENV'))
+bot = create_bot(get_env('APP_ENV'))
 
 if __name__ == '__main__':
     print('Running bot...')
-    app.run()
+    bot.run()

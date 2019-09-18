@@ -1,12 +1,12 @@
 from flask_api import FlaskAPI
 
-from app.slackhelper import SlackHelper
+from bot.slackhelper import SlackHelper
 from config import get_env, str_to_bool
 from config.env import app_env
 
 
-def create_app(config_name):
-    print('Create app with config: %s' % config_name)
+def create_bot(config_name):
+    print('Create bot with config: %s' % config_name)
     app = FlaskAPI(__name__, instance_relative_config=False)
     app.config.from_object(app_env[config_name])
     app.config.from_pyfile('../config/env.py')
