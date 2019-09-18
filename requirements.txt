@@ -17,3 +17,4 @@ virtualenv==16.4.3
 virtualenv-clone==0.5.1
 websocket-client==0.54.0
 Werkzeug==0.15.0
+gunicorn==19.9.0

@@ -1,3 +1,5 @@
+import time
+
 from slackclient import SlackClient
 
 from config import get_env
@@ -5,10 +7,20 @@ from config import get_env
 
 class SlackHelper:
 
-    def __init__(self):
+    def __init__(self, api_mode=False):
         self.slack_token = get_env('SLACK_API_TOKEN')
         self.slack_client = SlackClient(self.slack_token)
         self.slack_channel = get_env('SLACK_CHANNEL')
+
+        self.bot_name = 'hand_ops'
+        self.bot_id = self.slack_client.api_call('auth.test')['user_id']
+        print('Bot id: %s' % self.bot_id)
+        if self.bot_id is None:
+            exit('Error, could not find %s' % self.bot_name)
+
+        print('Api mode: %s' % api_mode)
+        if not api_mode:
+            self.listen()
 
     def post_message(self, msg):
         return self.slack_client.api_call(
@@ -34,3 +46,11 @@ class SlackHelper:
             user=uid,
             token=self.slack_token
         )
+
+    def listen(self):
+        if self.slack_client.rtm_connect(with_team_state=False):
+            print('Successfully connected, listening for commands')
+            while True:
+                time.sleep(1)
+        else:
+            exit('Error, connection failed')
