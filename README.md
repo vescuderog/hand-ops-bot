@@ -40,7 +40,7 @@ deactivate
 
 ## Usage
 
-If you want to run HandOps bot on your local machine, you can set the environment variables using a [.env file](https://github.com/theskumar/python-dotenv). To do this, create an .env file in the main project directory with the following variables:
+To run HandOps bot on your local machine, you can set the environment variables using a [.env file](https://github.com/theskumar/python-dotenv). To do this, create an .env file in the main project directory with the following variables:
 
 ```bash
 APP_ENV="development"
@@ -50,7 +50,7 @@ SLACK_API_TOKEN="YOURSLACKAPITOKEN"
 SLACK_CHANNEL="YOURSLACKCHANNEL"
 ```
 
-Run the development server:
+Then, run the development server:
 
 ```bash
 python handops.py
