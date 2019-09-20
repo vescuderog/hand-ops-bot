@@ -4,7 +4,7 @@ from bot.slackhelper import SlackHelper
 from config.env import app_env
 
 
-def create_app(config_name, bot):
+def create_app(config_name, slack_client):
     print('Create bot with config: %s' % config_name)
     app = FlaskAPI(__name__, instance_relative_config=False)
     app.config.from_object(app_env[config_name])
@@ -12,7 +12,7 @@ def create_app(config_name, bot):
 
     @app.route("/", methods=["GET"])
     def home():
-        bot.post_message('Hello Slack! :tada:')
+        slack_client.post_message('Hello Slack! :tada:')
 
         # Rendering text
         return 'Hello! I am HandOps!'

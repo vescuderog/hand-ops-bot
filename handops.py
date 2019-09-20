@@ -10,5 +10,5 @@ if __name__ == '__main__':
     if rtm_mode:
         bot.listen()
     else:
-        app = create_app(get_env('APP_ENV'), bot)
-        app.run()
+        bot = create_app(get_env('APP_ENV'), bot)
+        bot.run()
