@@ -1,11 +1,11 @@
-from config import get_env
+import os
 
 
 class EnvConfig(object):
     # Parent configuration class
     DEBUG = False
     CSRF_ENABLED = True
-    SECRET_KEY = get_env('SECRET')
+    SECRET_KEY = os.urandom(16)
 
 
 class DevelopmentEnv(EnvConfig):

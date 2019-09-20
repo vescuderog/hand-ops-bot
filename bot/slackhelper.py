@@ -7,20 +7,17 @@ from config import get_env
 
 class SlackHelper:
 
-    def __init__(self, api_mode=False):
+    def __init__(self):
         self.slack_token = get_env('SLACK_API_TOKEN')
         self.slack_client = SlackClient(self.slack_token)
         self.slack_channel = get_env('SLACK_CHANNEL')
 
-        self.bot_name = 'hand_ops'
+        self.bot_name = get_env('BOT_NAME')
+        print('Bot name: %s' % self.bot_name)
         self.bot_id = self.slack_client.api_call('auth.test')['user_id']
         print('Bot id: %s' % self.bot_id)
         if self.bot_id is None:
             exit('Error, could not find %s' % self.bot_name)
-
-        print('Api mode: %s' % api_mode)
-        if not api_mode:
-            self.listen()
 
     def post_message(self, msg):
         return self.slack_client.api_call(
@@ -29,7 +26,7 @@ class SlackHelper:
             text=msg
         )
 
-    def file_upload(self, file_content, file_name, file_type, title=None, ):
+    def file_upload(self, file_content, file_name, file_type, title=None):
         return self.slack_client.api_call(
             'files.upload',
             channels=self.slack_channel,
