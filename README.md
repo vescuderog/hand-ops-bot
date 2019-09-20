@@ -3,7 +3,9 @@
 [![wercker status](https://app.wercker.com/status/a5ca5229d8cb0a5d4995ec9cf8e60d6e/s/ "wercker status")](https://app.wercker.com/project/byKey/a5ca5229d8cb0a5d4995ec9cf8e60d6e)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-HandOps bot is a Python framework with the goal of being a bridge between the collaboration tool [Slack](https://slack.com/intl/es-la/) and the DevOps tool [GitLab](https://gitlab.com/).
+HandOps bot is a Python library for easy operation with [Slack](https://slack.com/intl/es-la/) and with the DevOps tool [GitLab](https://gitlab.com/).
+
+It also exposes all opportunities of [Slack's Real Time Messaging API](https://api.slack.com/rtm).
 
 ## Getting Started
 
@@ -38,14 +40,20 @@ If you want to leave your virtual environment:
 deactivate
 ```
 
+### Environment variables
+
+* `APP_ENV` - the deployment environment: development, testing, staging or production
+* `RTM_MODE` - set to True to open websocket connection to listen to incoming messages (default False)
+* `SLACK_API_TOKEN` - the bot user OAuth access token
+* `SLACK_CHANNEL` - the slack channel
+
 ## Usage
 
 To run HandOps bot on your local machine, you can set the environment variables using a [.env file](https://github.com/theskumar/python-dotenv). To do this, create an .env file in the main project directory with the following variables:
 
 ```bash
 APP_ENV="development"
-API_MODE=True
-SECRET="YOURSECRET"
+RTM_MODE=False
 SLACK_API_TOKEN="YOURSLACKAPITOKEN"
 SLACK_CHANNEL="YOURSLACKCHANNEL"
 ```
