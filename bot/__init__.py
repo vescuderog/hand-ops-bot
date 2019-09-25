@@ -1,3 +1,5 @@
+__author__ = 'vescudero'
+
 from flask_api import FlaskAPI
 
 from bot.slackhelper import SlackHelper

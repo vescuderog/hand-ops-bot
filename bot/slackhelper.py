@@ -1,4 +1,4 @@
-import time
+__author__ = 'vescudero'
 
 from slackclient import SlackClient
 
@@ -12,12 +12,8 @@ class SlackHelper:
         self.slack_client = SlackClient(self.slack_token)
         self.slack_channel = get_env('SLACK_CHANNEL')
 
-        self.bot_name = get_env('BOT_NAME')
-        print('Bot name: %s' % self.bot_name)
-        self.bot_id = self.slack_client.api_call('auth.test')['user_id']
-        print('Bot id: %s' % self.bot_id)
-        if self.bot_id is None:
-            exit('Error, could not find %s' % self.bot_name)
+    def get_bot_id(self):
+        return self.slack_client.api_call('auth.test')['user_id']
 
     def post_message(self, msg):
         return self.slack_client.api_call(
@@ -43,11 +39,3 @@ class SlackHelper:
             user=uid,
             token=self.slack_token
         )
-
-    def listen(self):
-        if self.slack_client.rtm_connect(with_team_state=False):
-            print('Successfully connected, listening for commands')
-            while True:
-                time.sleep(1)
-        else:
-            exit('Error, connection failed')

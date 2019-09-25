@@ -1,3 +1,5 @@
+__author__ = 'vescudero'
+
 from os import path, environ
 
 from dotenv import load_dotenv
@@ -9,14 +11,11 @@ load_dotenv(env_path, override=True)
 def get_env(key):
     if environ.get(key) is not None:
         return environ.get(key)
+    return None
 
 
-def str_to_bool(s):
-    if s:
-        if s == 'True':
+def str_to_bool(string):
+    if string:
+        if string == 'True':
             return True
-        elif s == 'False':
-            return False
-        else:
-            raise ValueError
     return False
