@@ -1,5 +1,6 @@
 # HandOps bot
 
+![Python application](https://github.com/vescuderog/hand-ops-bot/workflows/Python%20application/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 HandOps bot is a Python library for easy operation with [Slack](https://slack.com/intl/es-la/) and [GitLab](https://gitlab.com/).
