@@ -1,6 +1,5 @@
 # HandOps bot
 
-[![wercker status](https://app.wercker.com/status/a5ca5229d8cb0a5d4995ec9cf8e60d6e/s/ "wercker status")](https://app.wercker.com/project/byKey/a5ca5229d8cb0a5d4995ec9cf8e60d6e)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 HandOps bot is a Python library for easy operation with [Slack](https://slack.com/intl/es-la/) and [GitLab](https://gitlab.com/).
